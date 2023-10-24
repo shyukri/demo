@@ -13,6 +13,9 @@ spec:
     path: charts/cert-manager
     repoURL: https://github.com/shyukri/demo
     targetRevision: main
+    helm:
+      valuesObject:
+        installCRDs: true  
   syncPolicy:
     automated:
       prune: true
