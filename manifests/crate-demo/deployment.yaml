@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crate-demo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crate-demo
+  template:
+    metadata:
+      labels:
+        app: crate-demo
+    spec:
+      containers:
+      - name: crate-demo-container
+        image: <image_name>
+        ports:
+        - containerPort: 443

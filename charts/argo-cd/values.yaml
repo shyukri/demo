@@ -1,0 +1,37 @@
+argo-cd:
+  fullnameOverride: argocd
+  global:
+    logging:
+      format: json
+    affinity:
+      podAntiAffinity: soft
+  configs:
+    repositories:
+      demo:
+        url: https://github.com/shyukri/demo
+        name: demo
+      helm-stable:
+        type: helm
+        url: https://charts.helm.sh/stable
+        name: stable
+      cert-manager:
+        type: helm
+        url: https://charts.jetstack.io
+        name: cert-manager
+      kubernetes-helm:
+        type: helm
+        url: https://kubernetes.github.io/ingress-nginx
+        name: ingress-nginx
+      argoproj:
+        type: helm
+        url: https://argoproj.github.io/argo-helm
+        name: argo
+    # argocd-cmd-params-cm
+    params:
+      # https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#disabling-tls-to-argocd-dex-server
+      server.dex.server: 'http://argocd-dex-server:5556'
+    rbac:
+      policy.default: role:admin
+  dex:
+    extraArgs:
+      - --disable-tls

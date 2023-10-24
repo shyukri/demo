@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-cd
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "-4"
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  project: default
+  source:
+    path: charts/argo-cd
+    repoURL: https://github.com/shyukri/demo
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values.yaml
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
