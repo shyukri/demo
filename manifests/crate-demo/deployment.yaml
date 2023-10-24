@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: crate-demo-container
-        image: <image_name>
+        image: nginx:1.25.2
         ports:
         - containerPort: 443

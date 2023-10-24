@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crate-demo
+spec:
+  destination:
+    namespace: crate-demo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: manifests/crate-demo
+    repoURL: https://github.com/shyukri/demo
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
