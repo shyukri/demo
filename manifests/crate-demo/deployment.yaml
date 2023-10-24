@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
       - name: crate-demo-container
-        image: nginx:1.25.2
+        image: gcr.io/google-samples/hello-app:1.0
         ports:
         - containerPort: 443

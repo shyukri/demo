@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: crate-demo-service
 spec:
-  type: LoadBalancer
   selector:
     app: crate-demo
+  type: ClusterIP
   ports:
-  - port: 443
-    targetPort: 443
+    - port: 443
+      targetPort: 8080
