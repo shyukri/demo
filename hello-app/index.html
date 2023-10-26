@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Crate Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <p><img src='https://cratedb.com/hubfs/CrateDB-logo-blue-white.svg'/></p>
+    <h1 class="text-3xl font-bold underline">crate-demo, TESTING!</h1>
+    <h3 class="text-xl font-bold">Request headers below:</h3>
+    {{range $k, $v := . }}
+    <ul class="text-sky-400">
+        <li> {{ $k }}: {{ $v }}</li>
+    </ul>
+    {{end}}
+</body>
+
+</html>
