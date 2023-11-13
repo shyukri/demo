@@ -6,6 +6,8 @@ argo-cd:
     affinity:
       podAntiAffinity: soft
   configs:
+    cm:
+      application.resourceTrackingMethod: annotation+label
     repositories:
       demo:
         url: https://github.com/shyukri/demo
@@ -26,6 +28,10 @@ argo-cd:
         type: helm
         url: https://argoproj.github.io/argo-helm
         name: argo
+      crossplane-stable:
+        type: helm
+        url: https://charts.crossplane.io/stable
+        name: crossplane
     # argocd-cmd-params-cm
     params:
       # https://argo-cd.readthedocs.io/en/stable/operator-manual/tls/#disabling-tls-to-argocd-dex-server
